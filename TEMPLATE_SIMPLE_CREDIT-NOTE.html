@@ -1,6 +1,8 @@
 <html>
 <head>
-	<link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         @media print {
             @page {
@@ -55,7 +57,7 @@
 
 
         body.main {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Lato', sans-serif;
             counter-reset: position;
         }
 
@@ -63,7 +65,7 @@
             position: running(headerIdentifier);
             width:100%;
             font-size:23pt;
-            font-style: italic;
+            font-style: normal;
             text-align: right;
         }
 
@@ -107,7 +109,7 @@
         h1 {
             font-size: 12pt;
 
-            font-style: italic;
+            font-style: normal;
             color: #333333;
         }
 
@@ -126,7 +128,7 @@
 
         div.addressline {
             font-size: 7pt;
-            font-style: italic;
+            font-style: normal;
             color:#333333;
             position: absolute;
             top:-2mm;
@@ -287,7 +289,7 @@
         tr.postheader {
 
             color:#333333;
-            font-style: italic;
+            font-style: normal;
             border-bottom: 1pt solid #cccccc;
         }
 
@@ -324,7 +326,7 @@
             padding-right: 1mm;
         }
         table.partialheader thead tr td{
-            font-style: italic;
+            font-style: normal;
             color:#333333;
         }
         table.partialheader tbody tr.final_invoice_row{
