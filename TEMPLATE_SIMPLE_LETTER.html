@@ -1,0 +1,452 @@
+<html>
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+    <style>
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 50mm 17mm 35mm 20mm;
+
+                @top-left {
+                    content: element(headerIdentifier);
+                }
+
+                @bottom-left {
+                    content: element(footerIdentifier);
+                }
+
+                @left-middle {
+                    content: element(foldlinesIdentifier);
+                }
+            }
+        }
+
+        .foldline1 {
+            position: absolute;
+            left:0;
+            top:55mm;
+            width:4mm;
+            border:0;
+            border-bottom: 1px solid #000;
+
+        }
+
+        .foldline2 {
+            position: absolute;
+            left:0;
+            top:160mm;
+            width:4mm;
+            border:0;
+            border-bottom: 1px solid #000;
+        }
+
+        .foldline3 {
+            position: absolute;
+            left:0;
+            top:98.5mm;
+            width:7mm;
+            border:0;
+            border-bottom: 1px solid #000;
+        }
+
+        aside.foldlines {
+            position: running(foldlinesIdentifier);
+        }
+
+
+        body.main {
+            font-family: 'Roboto', sans-serif;
+            counter-reset: position;
+        }
+
+        header {
+            position: running(headerIdentifier);
+            width:100%;
+            font-size:23pt;
+            font-style: italic;
+            text-align: right;
+        }
+
+
+        img.logo {
+            height:18mm;
+            position: absolute;
+            top:15mm;
+            right:0;
+        }
+
+        footer {
+            position: running(footerIdentifier);
+            width:100%;
+            font-size:7pt;
+            line-height: 10pt;
+            height:35mm;
+            overflow:hidden;
+
+        }
+
+        footer table {
+            width:100%;
+            color:#707070;
+        }
+
+        footer table td {
+            width:25%;
+        }
+
+        footer .pagecount {
+            text-align:right;
+            width:100%;
+            color:#666666;
+        }
+
+        footer td{
+            vertical-align: top;
+        }
+
+        h1 {
+            font-size: 12pt;
+
+            font-style: italic;
+            color: #333333;
+        }
+
+        .qrcode {
+            -ro-replacedelement: qrcode;
+        }
+
+        .page::before {
+            content: counter(page);
+        }
+
+        .totalPages::before {
+            content: counter(pages);
+        }
+
+
+        div.addressline {
+            font-size: 6pt;
+            font-style: italic;
+            color:#333333;
+            position: absolute;
+            top:-2mm;
+            left:1mm;
+            max-width: 87mm;
+            white-space: pre-wrap;
+        }
+
+        div.recipient {
+            font-size: 9pt;
+            color:#333333;
+            position: absolute;
+            top:10mm;
+            left:1mm;
+            max-width: 87mm;
+            white-space: pre-wrap;
+        }
+
+        div.descbox {
+            position: absolute;
+            color:#333333;
+            top:-15mm;
+            right:0;
+            width: 65mm;
+            font-size: 7pt;
+
+        }
+
+        .url-qrcodeWrapper {
+            height:14mm;
+            text-align: right;
+            margin-bottom:3mm;
+        }
+
+        .url-qrcode {
+            width:14mm;
+        }
+
+        div.descbox table {
+            width:100%;
+
+        }
+        div.descbox table tr{
+            margin:3px 0;
+        }
+
+        .headText {
+            font-size: 9pt;
+            color:#333333;
+
+        }
+
+        .footText {
+            font-size: 9pt;
+            color:#333333;
+        }
+
+        table.postable {
+            font-size: 9pt;
+            width: 100%;
+            border-collapse: collapse;
+            border-spacing: 0;
+            margin: 4mm 0;
+        }
+
+        table.postable td {
+            padding-right: 1mm;
+
+        }
+
+        table.postable .position {
+            page-break-inside: avoid;
+        }
+
+        table.postable .position td {
+            padding-bottom:2mm;
+        }
+
+        table.postable tbody {
+            border-top: 3mm solid transparent;
+        }
+
+        table.postable tbody .posnr {
+            padding-left:2mm;
+        }
+
+        table.postable .postext {
+            line-height:14pt;
+            white-space: pre-wrap;
+            color: #333333;
+
+        }
+
+        table.postable .discount {
+            font-size:7pt;
+            line-height: 10pt;
+            color:#333333;
+        }
+
+        table.postable tfoot {
+            page-break-inside: avoid;
+            display:table-row-group;
+            color:#333333;
+
+        }
+
+        table.postable tfoot .line {
+            border-top:1px solid #cccccc;
+            height:1pt;
+        }
+
+        table.postable tfoot .totalnet, table.postable tfoot .discountnet {
+
+            line-height:6mm;
+            font-size:9pt;
+            color:#333333;
+            padding:0 2mm;
+        }
+
+        table.postable tfoot .vat, table.postable tfoot .discount {
+            line-height:6mm;
+            font-size:9pt;
+            padding:0mm;
+            margin:0;
+            border:0;
+        }
+
+        table.postable tfoot .total {
+
+            line-height:6mm;
+            font-size:9pt;
+            font-weight:bold;
+            padding:0 2mm;
+
+            margin:0;
+            border:0;
+        }
+
+        hr.invisible {
+            visibility: hidden;
+            clear: both;
+            margin: 0;
+            height:40mm;
+        }
+
+        table.postable tr{
+            line-height:6mm;
+            padding:0 2mm;
+        }
+
+        tr.postheader {
+
+            color:#333333;
+            font-style: italic;
+            border-bottom: 1pt solid #cccccc;
+        }
+
+        tr.postheader td {
+            white-space: nowrap;
+        }
+
+        table.postable td {
+            vertical-align: top;
+        }
+
+        td.right {
+            text-align: right;
+        }
+
+
+
+    </style>
+
+</head>
+<body class="main">
+
+<header>
+    {{#parameter.letterpaper_S}}
+    {{#data.is_logo}}
+    <img class="logo" alt="{{data.client.name}}" src="data:image/png;base64,{{data.logo}}"/>
+    {{/data.is_logo}}
+    {{^data.is_logo}}
+    {{data.client.name}}
+    {{/data.is_logo}}
+    {{/parameter.letterpaper_S}}
+</header>
+{{#parameter.printFoldLines_Y}}
+<aside class="foldlines">
+    <hr class="foldline1"/>
+    <hr class="foldline2"/>
+    <hr class="foldline3"/>
+</aside>
+{{/parameter.printFoldLines_Y}}
+
+
+
+
+<footer>
+    {{#parameter.printPageNumbers_Y}}
+    <div class="pagecount">
+        {{# i18n }}Page{{/ i18n}} <span class="page"/> {{# i18n }}PageOf{{/ i18n}} <span class="totalPages"/>
+    </div>
+    {{/parameter.printPageNumbers_Y}}
+    {{#parameter.printFooter_Y}}
+    <table>
+        <tr>
+            <td>
+                {{data.client.name}}<br/>
+                {{#data.client.name_addition}}
+                {{data.client.name_addition}}<br/>
+                {{/data.client.name_addition}}
+                {{data.client.address_street}}<br/>
+                {{data.client.address_zip}} {{data.client.address_city}} <br/>
+                {{data.client.address_country}}            </td>
+            <td>
+                {{#data.client.contact_phone}}
+                {{# i18n }}Tel.{{/ i18n}}: {{data.client.contact_phone}}<br/>
+                {{/data.client.contact_phone}}
+                {{#data.client.contact_fax}}
+                {{# i18n }}Fax.{{/ i18n}}: {{data.client.contact_fax}}<br/>
+                {{/data.client.contact_fax}}
+
+                {{#data.client.contact_email}}
+                {{# i18n }}E-Mail.{{/ i18n}}: {{data.client.contact_email}}<br/>
+                {{/data.client.contact_email}}
+                {{#data.client.website}}
+                {{# i18n }}Web{{/ i18n}}: {{data.client.website}}
+                {{/data.client.website}}
+            </td>
+            <td>
+                {{#data.client.district_court}}
+                {{data.client.district_court}}<br/>
+                {{/data.client.district_court}}
+
+                {{#data.client.company_register}}
+                {{# i18n }}HR-Nr.{{/ i18n}}: {{data.client.company_register}}<br/>
+                {{/data.client.company_register}}
+
+                {{#data.client.vat_number}}
+                {{# i18n }}VAT.-ID{{/ i18n}}: {{data.client.vat_number}}<br/>
+                {{/data.client.vat_number}}
+
+                {{#data.client.tax_number}}
+                {{# i18n }}Tax-No.{{/ i18n}}: {{data.client.tax_number}}<br/>
+                {{/data.client.tax_number}}
+
+                {{#data.client.ceo_name}}
+                {{#data.client.is_owner}}
+                {{# i18n }}Owner{{/ i18n}}: {{data.client.ceo_name}}
+                {{/data.client.is_owner}}
+                {{#data.client.is_ceo}}
+                {{# i18n }}CEO{{/ i18n}}: {{data.client.ceo_name}}
+                {{/data.client.is_ceo}}
+                {{/data.client.ceo_name}}
+            </td>
+            <td>
+                {{#data.client.bank}}
+                {{data.client.bank}}<br/>
+                {{/data.client.bank}}
+
+                {{#data.client.bank_account_number}}
+                {{# i18n }}Account no.{{/ i18n}}: {{data.client.bank_account_number}}<br/>
+                {{/data.client.bank_account_number}}
+
+                {{#data.client.bank_number}}
+                {{# i18n }}Bank no.{{/ i18n}}: {{data.client.bank_number}}<br/>
+                {{/data.client.bank_number}}
+
+                {{#data.client.bank_iban}}
+                IBAN: {{data.client.bank_iban}}<br/>
+                {{/data.client.bank_iban}}
+
+                {{#data.client.bank_bic}}
+                BIC: {{data.client.bank_bic}}<br/>
+                {{/data.client.bank_bic}}
+            </td>
+
+        </tr>
+    </table>
+    {{/parameter.printFooter_Y}}
+</footer>
+
+{{#parameter.printDeliveryReturn_Y}}
+<div class="addressline">{{data.client.name}} - {{data.client.address_street}} - {{data.client.address_zip}} {{data.client.address_city}}</div>
+{{/parameter.printDeliveryReturn_Y}}
+
+<div class="recipient">{{data.object.address}}</div>
+
+<div class="descbox">
+
+    <div class="url-qrcodeWrapper">
+        {{#parameter.qrCode_Y}}
+        <a href="{{data.object.qr_url}}" class="qrcode url-qrcode"></a>
+        {{/parameter.qrCode_Y}}
+    </div>
+
+
+    <table>
+
+        <tr>
+            <td>{{# i18n }}Your customer no.{{/ i18n}}</td>
+            <td class="right">{{data.object.customer_number}}</td>
+        </tr>
+        <tr>
+            <td>{{# i18n }}Your contact{{/ i18n}}</td>
+            <td class="right" style="word-wrap: break-word; word-break: pre-wrap;">{{data.object.contact_person}}</td>
+        </tr>
+        <tr>
+            <td>{{# i18n }}Date{{/ i18n}}</td>
+            <td class="right">{{# date }}{{data.object.letter_date}}{{/ date }}</td>
+        </tr>
+
+    </table>
+
+</div>
+<hr class="invisible" />
+<h1>{{data.object.header}}</h1>
+<div class="headText">
+    {{{data.object.text}}}
+</div>
+
+</body>
+</html>
