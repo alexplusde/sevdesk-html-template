@@ -1,8 +1,9 @@
+<!-- invoice -->
 <html>
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         @font-face { font-family: 'ocrb'; src: url('https://docreactor.sevdesk.de/ocrb.ttf'); }
         @media print {
@@ -29,9 +30,7 @@
             left:0;
             top:55mm;
             width:4mm;
-            border:0;
             border-bottom: 1px solid #000;
-
         }
 
         .foldline2 {
@@ -39,7 +38,6 @@
             left:0;
             top:160mm;
             width:4mm;
-            border:0;
             border-bottom: 1px solid #000;
         }
 
@@ -48,14 +46,12 @@
             left:0;
             top:98.5mm;
             width:7mm;
-            border:0;
             border-bottom: 1px solid #000;
         }
 
         aside.foldlines {
             position: running(foldlinesIdentifier);
         }
-
 
         body.main {
             font-family: 'Lato', sans-serif;
@@ -69,7 +65,6 @@
             font-style: normal;
             text-align: right;
         }
-
 
         img.logo {
             height:18mm;
@@ -85,8 +80,8 @@
             line-height: 10pt;
             height:35mm;
             overflow:hidden;
-
         }
+
         div.shortPay {
             font-size: 9pt;
             line-height: 2.5;
@@ -100,7 +95,6 @@
             font-weight: bold;
             bottom:36px;
             left:31px;
-
         }
 
         footer table {
@@ -118,13 +112,8 @@
             color:#666666;
         }
 
-        footer td{
-            vertical-align: top;
-        }
-
         h1 {
             font-size: 12pt;
-
             font-style: normal;
             color: #333333;
         }
@@ -140,7 +129,6 @@
         .totalPages::before {
             content: counter(pages);
         }
-
 
         div.addressline {
             font-size: 6pt;
@@ -168,6 +156,18 @@
             font-size: 7pt;
         }
 
+        div.descbox table {
+            width:100%;
+        }
+
+        div.descbox table tr{
+            margin:3px 0;
+        }
+
+        div.descbox table tr td {
+            width:50%;
+        }
+
         .url-qrcodeWrapper {
             height:14mm;
             text-align: right;
@@ -178,18 +178,16 @@
             width:14mm;
         }
 
-        div.descbox table {
-            width:100%;
-
-        }
-        div.descbox table tr{
-            margin:3px 0;
+        hr.invisible {
+            visibility: hidden;
+            clear: both;
+            margin: 0;
+            height:40mm;
         }
 
         .headText {
             font-size: 9pt;
             color:#333333;
-
         }
 
         .footText {
@@ -201,17 +199,39 @@
             vertical-align: top;
         }
 
+        td.right {
+            text-align: right;
+        }
+
+        /* Ende kopierbar für alle Dokumente */
+
         table.postable {
             font-size: 9pt;
             width: 100%;
             border-collapse: collapse;
-            border-spacing: 0;
             margin: 4mm 0;
         }
 
+        table.postable tr{
+            line-height:6mm;
+            padding:0 2mm;
+        }
+
         table.postable td {
-            padding-right: 1mm;
-            padding-left: 1mm;
+            padding: 0 1mm;
+            vertical-align: top;
+            word-wrap: break-word;
+            word-break: break-all;
+        }
+
+        tr.postheader {
+            color:#333333;
+            font-style: normal;
+            padding-bottom: 3mm;
+        }
+
+        tr.postheader td {
+            white-space: nowrap;
         }
 
         table.postable .position {
@@ -220,10 +240,6 @@
 
         table.postable .position td {
             padding-bottom:2mm;
-        }
-
-        table.postable tbody {
-            border-top: 3mm solid transparent;
         }
 
         table.postable tbody .posnr {
@@ -238,7 +254,7 @@
             max-width: 90mm;
         }
 
-        table.postable .discount {
+        table.postable tbody .discount {
             font-size:7pt;
             line-height: 10pt;
             color:#333333;
@@ -248,7 +264,6 @@
             page-break-inside: avoid;
             display:table-row-group;
             color:#333333;
-
         }
 
         table.postable tfoot .line {
@@ -257,103 +272,55 @@
         }
 
         table.postable tfoot .totalnet, table.postable tfoot .discountnet {
-            line-height:6mm;
-            font-size:9pt;
             color:#333333;
-            padding:0 2mm;
-        }
-
-        table.postable tfoot .totalnetPosSum{
-            line-height:6mm;
-            font-size:9pt;
-            padding:0 2mm;
-            border-bottom: 1px solid #000;
-        }
-
-        table.postable tfoot .vat, table.postable tfoot .discount {
-            line-height:6mm;
-            font-size:9pt;
-            padding:0mm;
-            margin:0;
-            border:0;
         }
 
         table.postable tfoot .total {
-
-            line-height:6mm;
-            font-size:9pt;
             font-weight:bold;
-            padding:0 2mm;
-
-            margin:0;
-            border:0;
         }
 
-        hr.invisible {
-            visibility: hidden;
-            clear: both;
-            margin: 0;
-            height:40mm;
-        }
 
-        table.postable tr{
-            line-height:6mm;
-            padding:0 2mm;
-        }
-
-        tr.postheader {
-
-            color:#333333;
-            font-style: normal;
-            border-bottom: 1pt solid #cccccc;
-        }
-
-        tr.postheader td {
-            white-space: nowrap;
-        }
-
-        table.postable td {
-            vertical-align: top;
-            word-wrap: break-word;
-            word-break: break-all;
-        }
-
-        td.right {
-            text-align: right;
+        table.postable tfoot .totalnetPosSum{
+            border-bottom: 1px solid #000;
         }
 
         h1.partialInvoiceCalculation{
             margin-top: 10mm;
         }
+
         table.partialheader{
             page-break-inside: avoid;
             font-size: 9pt;
             width: 100%;
             border-collapse: collapse;
-            border-spacing: 0;
             margin: 4mm 0;
         }
+
         table.partialheader tr{
             line-height:6mm;
             padding:0 2mm;
         }
-        table.partialheader tr.discount{
-            line-height:2mm;
-            font-size:8pt;
-            padding:0 2mm;
-        }
+
         table.partialheader tr td{
             padding-right: 1mm;
         }
+
         table.partialheader thead tr td{
             font-style: normal;
             color:#333333;
         }
+
         table.partialheader tbody tr.sum_row{
             border-top: 1px solid #cccccc;
             color:#333333;
             font-weight:bold;
         }
+
+        table.partialheader tr.discount{
+            line-height:2mm;
+            font-size:8pt;
+        }
+
         .newPage {
             position: relative;
             height: 297mm;
@@ -397,42 +364,45 @@
             display: table-row;
             width: 210mm;
         }
+
         .paymentSlip-table-wrapper {
             position: relative;
             display: table-cell;
             width: 123mm;
         }
+
         .paymentSlip-table-wrapper2 {
             position: relative;
             display: table-cell;
         }
-        .paymentSlip-table {
 
+        .paymentSlip-table {
             font-size: 8.5pt!important;
             font-weight: lighter;
             border-collapse: collapse!important;
             border-spacing: 0!important;
-
         }
+
         .paymentSlip-table-row {
             min-height: 30px;
             vertical-align: top;
         }
+
         .paymentSlip-table-row > *{
             padding-left: 2mm;
             vertical-align: top;
-
         }
+
         .ocrFont {
             font-family: 'ocrb'!important;
         }
     </style>
-
 </head>
+
 <body class="main">
 
+<!-- running-elements -->
 <header>
-
     {{#parameter.letterpaper_S}}
     {{#data.is_logo}}
     <img class="logo" alt="{{data.client.name}}" src="data:image/png;base64,{{data.logo}}"/>
@@ -441,9 +411,6 @@
     {{data.client.name}}
     {{/data.is_logo}}
     {{/parameter.letterpaper_S}}
-
-
-
 </header>
 
 {{#parameter.printFoldLines_Y}}
@@ -453,8 +420,6 @@
     <hr class="foldline3"/>
 </aside>
 {{/parameter.printFoldLines_Y}}
-
-
 
 <footer>
     {{#parameter.printPageNumbers_Y}}
@@ -536,29 +501,28 @@
                 BIC: {{data.client.bank_bic}}<br/>
                 {{/data.client.bank_bic}}
             </td>
-
         </tr>
     </table>
     {{/parameter.printFooter_Y}}
 </footer>
+<!-- end running-elements -->
 
+<!-- header first page -->
 {{#parameter.printDeliveryReturn_Y}}
 <div class="addressline">{{data.client.name}} - {{data.client.address_street}} - {{data.client.address_zip}} {{data.client.address_city}}</div>
 {{/parameter.printDeliveryReturn_Y}}
 
 <div class="recipient">{{data.object.address}}{{#data.it}}{{#data.object.vat_number}}<br /><span style="font-size: 14px;">VAT: {{data.object.vat_number}}</span>{{/data.object.vat_number}}{{/data.it}}</div>
-<div class="descbox">
 
+<div class="descbox">
     <div class="url-qrcodeWrapper">
         {{#parameter.qrCode_Y}}
         <a href="{{data.object.qr_url}}" class="qrcode url-qrcode"></a>
         {{/parameter.qrCode_Y}}
     </div>
-
-
     <table>
-        <tr style="font-size:11pt;font-style: normal">
-            <td style="width:50%;">{{# i18n }}Invoice Nr.{{/ i18n}}</td>
+        <tr style="font-size:11pt;font-style: normal;">
+            <td>{{# i18n }}Invoice Nr.{{/ i18n}}</td>
             <td class="right" style="word-wrap:break-word;">{{data.object.invoice_number}}</td>
         </tr>
         <tr>
@@ -566,14 +530,12 @@
             <td class="right">{{# date }}{{data.object.invoice_date}}{{/ date }}</td>
         </tr>
 
-
         {{#data.object.customer_internal_note}}
         <tr>
             <td>{{# i18n }}customer_internal_note{{/ i18n}}</td>
             <td class="right" style="word-wrap: break-word; word-break: pre-wrap;">{{data.object.customer_internal_note}}</td>
         </tr>
         {{/data.object.customer_internal_note}}
-
 
         {{#data.object.delivery_date}}
         {{#data.object.delivery_date_until}}
@@ -591,14 +553,13 @@
         {{/data.object.delivery_date}}
 
         <tr style="height:3mm;">
-            <td></td>
-            <td class="right"></td>
+            <td colspan="2"></td>
         </tr>
-
         <tr>
             <td>{{# i18n }}Your customer no.{{/ i18n}}</td>
             <td class="right">{{data.object.customer_number}}</td>
         </tr>
+
         {{#data.object.vat_number}}
         <tr>
             <td>{{# i18n }}Your VAT-ID{{/ i18n}}</td>
@@ -610,293 +571,235 @@
             <td>{{# i18n }}Your contact{{/ i18n}}</td>
             <td class="right" style="word-wrap: break-word; word-break: pre-wrap;">{{data.object.contact_person}}</td>
         </tr>
-
     </table>
-
 </div>
+<!-- end header first page -->
+
 <hr class="invisible" />
-<h1>{# i18n }}Invoice Nr.{{/ i18n}} {{data.object.invoice_number}}</h1>
+<h1>{{data.object.header}}</h1>
 <div class="headText">
     {{{data.object.head_text}}}
 </div>
 
+<!-- position table -->
 <table class="postable">
     <thead>
-    <tr class="postheader">
-        <td style="width: 8mm">{{# i18n }}Pos.{{/ i18n}}</td>
-        {{#parameter.printPartNumber_Y}}
-        <td style="width: 15mm">{{# i18n }}Article{{/ i18n}}</td>
-        <td style="width: 40mm">{{# i18n }}Description{{/ i18n}}</td>
-        {{/parameter.printPartNumber_Y}}
-        {{^parameter.printPartNumber_Y}}
-        <td style="width: 55mm" colspan="2">{{# i18n }}Description{{/ i18n}}</td>
-        {{/parameter.printPartNumber_Y}}
-        <td style="width:17mm" class="right">{{# i18n }}Quantity{{/ i18n}}</td>
-        <td style="width:25mm" class="right">{{# i18n }}Unit price{{/ i18n}}</td>
-        <td style="width:25mm" class="right">{{# i18n }}Total price{{/ i18n}}</td>
-    </tr>
-
+        <tr class="postheader">
+            <td style="width: 8mm;">{{# i18n }}Pos.{{/ i18n}}</td>
+            {{#parameter.printPartNumber_Y}}
+            <td style="width: 15mm;">{{# i18n }}Article{{/ i18n}}</td>
+            <td style="width: 40mm;">{{# i18n }}Description{{/ i18n}}</td>
+            {{/parameter.printPartNumber_Y}}
+            {{^parameter.printPartNumber_Y}}
+            <td style="width: 55mm;" colspan="2">{{# i18n }}Description{{/ i18n}}</td>
+            {{/parameter.printPartNumber_Y}}
+            <td style="width:17mm;" class="right">{{# i18n }}Quantity{{/ i18n}}</td>
+            <td style="width:25mm;" class="right">{{# i18n }}Unit price{{/ i18n}}</td>
+            <td style="width:26mm;" class="right">{{# i18n }}Total price{{/ i18n}}</td>
+        </tr>
     </thead>
-
     <tbody>
-
-    {{#data.object.positions}}
-
-    <tr class="position">
-        {{#pos_nr}}
-        <td class="posnr">{{pos_nr}}.</td>
-
-        {{#parameter.printPartNumber_Y}}
-        <td>{{part_number}}</td>
-        <td>{{{name}}}<div class="postext">{{{text}}}</div></td>
-        {{/parameter.printPartNumber_Y}}
-        {{^parameter.printPartNumber_Y}}
-        <td colspan="2">{{{name}}}<div class="postext">{{{text}}}</div></td>
-        {{/parameter.printPartNumber_Y}}
-
-
-        <td class="right">
-            {{^hide_quantity}}
-            {{#numberformat}}{{quantity}}{{/numberformat}}
-            {{/hide_quantity}}
-            {{unity_name}}
-        </td>
-
-        <td class="right">{{#currencyformat}}{{tax_price}}{{/currencyformat}}</td>
-        <td class="right">
-            {{#currencyformat}}{{total}}{{/currencyformat}}
-            {{#discount}}
-            <div class="discount">
-                ({{# i18n }}Discount{{/ i18n}}{{#is_percentage}} {{discount}}% {{/is_percentage}}<br/>
-                {{#currencyformat}}{{discounted_value}}{{/currencyformat}})
-            </div>
-            {{/discount}}
-            {{#parameter.printPosTax_Y}}
-            <div class="discount">
-                ({{# i18n }}Tax{{/ i18n}} {{tax_rate}}%)<br/>
-            </div>
-            {{/parameter.printPosTax_Y}}
-        </td>
-        {{/pos_nr}}
-
-        {{^pos_nr}}
-        <td colspan="6"><span style="font-weight:bold;">{{{name}}}</span><div class="postext">{{{text}}}</div></td>
-        {{/pos_nr}}
-    </tr>
-
-    {{/data.object.positions}}
+        {{#data.object.positions}}
+        <tr class="position">
+            {{#pos_nr}}
+            <td class="posnr">{{pos_nr}}.</td>
+            {{#parameter.printPartNumber_Y}}
+            <td>{{part_number}}</td>
+            <td>{{{name}}}<div class="postext">{{{text}}}</div></td>
+            {{/parameter.printPartNumber_Y}}
+            {{^parameter.printPartNumber_Y}}
+            <td colspan="2">{{{name}}}<div class="postext">{{{text}}}</div></td>
+            {{/parameter.printPartNumber_Y}}
+            <td class="right">
+                {{^hide_quantity}}
+                {{#numberformat}}{{quantity}}{{/numberformat}}
+                {{/hide_quantity}}
+                {{unity_name}}
+            </td>
+            <td class="right">{{#currencyformat}}{{tax_price}}{{/currencyformat}}</td>
+            <td class="right">
+                {{#currencyformat}}{{total}}{{/currencyformat}}
+                {{#discount}}
+                <div class="discount">
+                    ({{# i18n }}Discount{{/ i18n}}{{#is_percentage}} {{discount}}% {{/is_percentage}}<br/>
+                    {{#currencyformat}}{{discounted_value}}{{/currencyformat}})
+                </div>
+                {{/discount}}
+                {{#parameter.printPosTax_Y}}
+                <div class="discount">
+                    ({{# i18n }}Tax{{/ i18n}} {{tax_rate}}%)<br/>
+                </div>
+                {{/parameter.printPosTax_Y}}
+            </td>
+            {{/pos_nr}}
+            {{^pos_nr}}
+            <td colspan="6"><span style="font-weight:bold;">{{{name}}}</span><div class="postext">{{{text}}}</div></td>
+            {{/pos_nr}}
+        </tr>
+        {{/data.object.positions}}
     </tbody>
     <tfoot>
-    <tr class="line">
-        <td colspan="6"></td>
-    </tr>
-    {{#data.object.has_discounts}}
-    <tr class="discountnet">
-        <td></td>
-
-        <td colspan="4">{{# i18n }}Sum positions{{/ i18n}}</td>
-        {{#data.object.show_net}}
-        <td class="right">{{#currencyformat}}{{data.object.total_withoutdisc_net}}{{/currencyformat}}
+        <tr class="line">
+            <td colspan="6"></td>
+        </tr>
+        {{#data.object.has_discounts}}
+        <tr class="discountnet">
+            <td></td>
+            <td colspan="4">{{# i18n }}Sum positions{{/ i18n}}</td>
+            {{#data.object.show_net}}
+            <td class="right">{{#currencyformat}}{{data.object.total_withoutdisc_net}}{{/currencyformat}}</td>
             {{/data.object.show_net}}
             {{^data.object.show_net}}
-        <td class="right">{{#currencyformat}}{{data.object.total_without_discount}}{{/currencyformat}}
+            <td class="right">{{#currencyformat}}{{data.object.total_without_discount}}{{/currencyformat}}</td>
             {{/data.object.show_net}}
-        </td>
-    </tr>
+        </tr>
+        {{#data.object.discounts}}
+        <tr class="discount">
+            <td></td>
+            <td colspan="3">{{ text }}</td>
+            <td class="right"  colspan="2">
+                {{#percentage}}
+                {{value}} % ({{#currencyformat}}{{value_relative}}{{/currencyformat}})
+                {{/percentage}}
+                {{^percentage}}
+                {{#currencyformat}}{{value}}{{/currencyformat}}
+                {{/percentage}}
+            </td>
+        </tr>
+        {{/data.object.discounts}}
+        {{/data.object.has_discounts}}
 
-    {{#data.object.discounts}}
-    <tr class="discount">
-        <td></td>
-
-        <td colspan="3">{{ text }}</td>
-
-        <td class="right"  colspan="2">
-            {{#percentage}}
-            {{value}} % ({{#currencyformat}}{{value_relative}}{{/currencyformat}})
-            {{/percentage}}
-            {{^percentage}}
-            {{#currencyformat}}{{value}}{{/currencyformat}}
-            {{/percentage}}
-        </td>
-    </tr>
-    {{/data.object.discounts}}
-    {{/data.object.has_discounts}}
-
-    {{#data.object.show_net}}
-    <tr class="totalnet">
-        <td></td>
-
-        <td colspan="4">{{# i18n }}Total net{{/ i18n}}</td>
-
-        <td class="right">{{#currencyformat}}{{data.object.total_net}}{{/currencyformat}}
-        </td>
-    </tr>
-    {{/data.object.show_net}}
-
-    {{^data.object.show_net}}
-    {{^data.object.has_discounts}}
-    {{^data.object.propertyShowGrossInvoicePosSum}}
-    <tr class="totalnet">
-        <td></td>
-
-        <td colspan="4">{{# i18n }}Total net{{/ i18n}}</td>
-
-        <td class="right">{{#currencyformat}}{{data.object.total_net}}{{/currencyformat}}
-        </td>
-    </tr>
-    {{/data.object.propertyShowGrossInvoicePosSum}}
-
-    {{#data.object.propertyShowGrossInvoicePosSum}}
-    <tr class="discountnet">
-        <td></td>
-
-        <td colspan="4">{{# i18n }}Sum positions{{/ i18n}}</td>
-
-        <td class="right">{{#currencyformat}}{{data.object.total_without_discount}}{{/currencyformat}}
-        </td>
-    </tr>
-    {{/data.object.propertyShowGrossInvoicePosSum}}
-    {{/data.object.has_discounts}}
-
-    {{#data.object.has_discounts}}
-    <tr class="totalnet">
-        <td></td>
-
-        <td colspan="4">{{# i18n }}Gross with discounts{{/ i18n}}</td>
-
-        <td class="right">{{#currencyformat}}{{data.object.total}}{{/currencyformat}}</td>
-
-    </tr>
-    {{/data.object.has_discounts}}
-    {{/data.object.show_net}}
-
-    {{#data.object.is_tax_type_default}}
-    {{#data.object.tax_groupes_formatted}}
-    <tr class="vat">
-        <td></td>
         {{#data.object.show_net}}
-        <td colspan="4">{{# i18n }}plus VAT{{/ i18n}} {{rate}}%</td>
+        <tr class="totalnet">
+            <td></td>
+            <td colspan="4">{{# i18n }}Total net{{/ i18n}}</td>
+            <td class="right">{{#currencyformat}}{{data.object.total_net}}{{/currencyformat}}</td>
+        </tr>
         {{/data.object.show_net}}
 
         {{^data.object.show_net}}
         {{^data.object.has_discounts}}
         {{^data.object.propertyShowGrossInvoicePosSum}}
-        <td colspan="4">{{# i18n }}plus VAT{{/ i18n}} {{rate}}%</td>
+        <tr class="totalnet">
+            <td></td>
+            <td colspan="4">{{# i18n }}Total net{{/ i18n}}</td>
+            <td class="right">{{#currencyformat}}{{data.object.total_net}}{{/currencyformat}}</td>
+        </tr>
         {{/data.object.propertyShowGrossInvoicePosSum}}
 
         {{#data.object.propertyShowGrossInvoicePosSum}}
-        <td colspan="4">{{# i18n }}included VAT{{/ i18n}} {{rate}}%</td>
+        <tr class="discountnet">
+            <td></td>
+            <td colspan="4">{{# i18n }}Sum positions{{/ i18n}}</td>
+            <td class="right">{{#currencyformat}}{{data.object.total_without_discount}}{{/currencyformat}}</td>
+        </tr>
         {{/data.object.propertyShowGrossInvoicePosSum}}
         {{/data.object.has_discounts}}
 
         {{#data.object.has_discounts}}
-        <td colspan="4">{{# i18n }}included VAT{{/ i18n}} {{rate}}%</td>
+        <tr class="totalnet">
+            <td></td>
+            <td colspan="4">{{# i18n }}Gross with discounts{{/ i18n}}</td>
+            <td class="right">{{#currencyformat}}{{data.object.total}}{{/currencyformat}}</td>
+        </tr>
         {{/data.object.has_discounts}}
         {{/data.object.show_net}}
 
-        <td class="right">{{#currencyformat}}{{value}}{{/currencyformat}}
-        </td>
-    </tr>
-    {{/data.object.tax_groupes_formatted}}
-    {{/data.object.is_tax_type_default}}
-    {{#data.object.is_tax_type_custom}}
-    <tr class="vat">
-        <td></td>
+        {{#data.object.is_tax_type_default}}
+        {{#data.object.tax_groupes_formatted}}
+        <tr class="vat">
+            <td></td>
+            {{#data.object.show_net}}
+            <td colspan="4">{{# i18n }}plus VAT{{/ i18n}} {{rate}}%</td>
+            {{/data.object.show_net}}
 
-        <td colspan="4">{{data.object.tax_set_text}}</td>
+            {{^data.object.show_net}}
+            {{^data.object.has_discounts}}
+            {{^data.object.propertyShowGrossInvoicePosSum}}
+            <td colspan="4">{{# i18n }}plus VAT{{/ i18n}} {{rate}}%</td>
+            {{/data.object.propertyShowGrossInvoicePosSum}}
 
-        <td class="right">
-            {{#data.object.total_tax}}{{#currencyformat}}{{data.object.total_tax}}{{/currencyformat}}{{/data.object.total_tax}}
-        </td>
-    </tr>
-    {{/data.object.is_tax_type_custom}}
-    {{#data.object.is_tax_type_smallsettlement}}
-    <tr class="vat">
-        <td></td>
+            {{#data.object.propertyShowGrossInvoicePosSum}}
+            <td colspan="4">{{# i18n }}included VAT{{/ i18n}} {{rate}}%</td>
+            {{/data.object.propertyShowGrossInvoicePosSum}}
+            {{/data.object.has_discounts}}
 
-        <td colspan="4">
-            {{# i18n }}All prices are excluding value added tax (small entrepreneurs to Section 19 UStG){{/ i18n }}
-        </td>
-        <td class="right">
-        </td>
-    </tr>
-    {{/data.object.is_tax_type_smallsettlement}}
-    {{#data.object.is_tax_type_eu}}
-    <tr class="vat">
-        <td></td>
+            {{#data.object.has_discounts}}
+            <td colspan="4">{{# i18n }}included VAT{{/ i18n}} {{rate}}%</td>
+            {{/data.object.has_discounts}}
+            {{/data.object.show_net}}
 
-        <td colspan="4">
-            {{# i18n }}Tax-exempt intra-Community supply{{/ i18n }}
-        </td>
+            <td class="right">{{#currencyformat}}{{value}}{{/currencyformat}}</td>
+        </tr>
+        {{/data.object.tax_groupes_formatted}}
+        {{/data.object.is_tax_type_default}}
+        {{#data.object.is_tax_type_custom}}
+        <tr class="vat">
+            <td></td>
+            <td colspan="4">{{data.object.tax_set_text}}</td>
+            <td class="right">{{#data.object.total_tax}}{{#currencyformat}}{{data.object.total_tax}}{{/currencyformat}}{{/data.object.total_tax}}</td>
+        </tr>
+        {{/data.object.is_tax_type_custom}}
+        {{#data.object.is_tax_type_smallsettlement}}
+        <tr class="vat">
+            <td></td>
+            <td colspan="4">{{# i18n }}All prices are excluding value added tax (small entrepreneurs to Section 19 UStG){{/ i18n }}</td>
+            <td class="right"></td>
+        </tr>
+        {{/data.object.is_tax_type_smallsettlement}}
+        {{#data.object.is_tax_type_eu}}
+        <tr class="vat">
+            <td></td>
+            <td colspan="4">{{# i18n }}Tax-exempt intra-Community supply{{/ i18n }}</td>
+            <td class="right"></td>
+        </tr>
+        {{/data.object.is_tax_type_eu}}
+        {{#data.object.is_tax_type_reversecharge}}
+        <tr class="vat">
+            <td></td>
+            <td colspan="4">{{# i18n }}Reverse Charge{{/ i18n }}</td>
+            <td class="right"></td>
+        </tr>
+        {{/data.object.is_tax_type_reversecharge}}
+        {{#data.object.is_tax_rule}}
+        {{#data.object.tax_groupes_formatted}}
+        <tr class="vat">
+            <td></td>
+            <td colspan="4">{{data.object.tax_rule_text}} {{rate}}%</td>
 
-        <td class="right">
-        </td>
-    </tr>
-    {{/data.object.is_tax_type_eu}}
-    {{#data.object.is_tax_type_reversecharge}}
-    <tr class="vat">
-        <td></td>
+            <td class="right">{{#currencyformat}}{{value}}{{/currencyformat}}</td>
+        </tr>
+        {{/data.object.tax_groupes_formatted}}
+        {{/data.object.is_tax_rule}}
 
-        <td colspan="4">
-            {{# i18n }}Reverse Charge{{/ i18n }}
-        </td>
+        {{^data.object.show_net}}
+        {{^data.object.has_discounts}}
+        {{#data.object.propertyShowGrossInvoicePosSum}}
+        <tr class="totalnetPosSum">
+            <td></td>
+            <td colspan="4">{{# i18n }}Total net{{/ i18n}}</td>
+            <td class="right">{{#currencyformat}}{{data.object.total_net}}{{/currencyformat}}</td>
+        </tr>
+        {{/data.object.propertyShowGrossInvoicePosSum}}
+        {{/data.object.has_discounts}}
 
-        <td class="right">
-        </td>
-    </tr>
-    {{/data.object.is_tax_type_reversecharge}}
-    {{#data.object.is_tax_rule}}
-    {{#data.object.tax_groupes_formatted}}
-    <tr class="vat">
-        <td></td>
+        {{#data.object.has_discounts}}
+        <tr class="totalnetPosSum">
+            <td></td>
+            <td colspan="4">{{# i18n }}Total net{{/ i18n}}</td>
+            <td class="right">{{#currencyformat}}{{data.object.total_net}}{{/currencyformat}}</td>
+        </tr>
+        {{/data.object.has_discounts}}
+        {{/data.object.show_net}}
 
-        <td colspan="4">
-            {{data.object.tax_rule_text}} {{rate}}%
-        </td>
-
-        <td class="right">
-            {{#currencyformat}}{{value}}{{/currencyformat}}
-        </td>
-    </tr>
-    {{/data.object.tax_groupes_formatted}}
-    {{/data.object.is_tax_rule}}
-
-    {{^data.object.show_net}}
-    {{^data.object.has_discounts}}
-    {{#data.object.propertyShowGrossInvoicePosSum}}
-    <tr class="totalnetPosSum">
-        <td></td>
-
-        <td colspan="4">{{# i18n }}Total net{{/ i18n}}</td>
-
-        <td class="right">{{#currencyformat}}{{data.object.total_net}}{{/currencyformat}}
-        </td>
-    </tr>
-    {{/data.object.propertyShowGrossInvoicePosSum}}
-    {{/data.object.has_discounts}}
-
-    {{#data.object.has_discounts}}
-    <tr class="totalnetPosSum">
-        <td></td>
-
-        <td colspan="4">{{# i18n }}Total net{{/ i18n}}</td>
-
-        <td class="right">{{#currencyformat}}{{data.object.total_net}}{{/currencyformat}}
-        </td>
-    </tr>
-    {{/data.object.has_discounts}}
-    {{/data.object.show_net}}
-
-    <tr class="total">
-        <td></td>
-
-        <td colspan="4">{{# i18n }}Total gross{{/ i18n}}</td>
-
-        <td class="right">{{#currencyformat}}{{data.object.total}}{{/currencyformat}}</td>
-    </tr>
+        <tr class="total">
+            <td></td>
+            <td colspan="4">{{# i18n }}Total gross{{/ i18n}}</td>
+            <td class="right">{{#currencyformat}}{{data.object.total}}{{/currencyformat}}</td>
+        </tr>
     </tfoot>
 </table>
-
+<!-- end position table -->
 
 <!-- calculation for final invoices -->
 {{#data.object.is_final_invoice}}
@@ -911,72 +814,58 @@
 
 <table class="partialheader">
     <thead>
-    <tr>
-        <td style="width:55mm"></td>
-        <td style="width:25mm" class="right">{{# i18n }}net{{/ i18n}}</td>
-        <td style="width:25mm" class="right">{{# i18n }}vat{{/ i18n}}</td>
-        <td style="width:25mm" class="right">{{# i18n }}gross{{/ i18n}}</td>
-    </tr>
+        <tr>
+            <td style="width:55mm;"></td>
+            <td style="width:25mm;" class="right">{{# i18n }}net{{/ i18n}}</td>
+            <td style="width:25mm;" class="right">{{# i18n }}vat{{/ i18n}}</td>
+            <td style="width:25mm;" class="right">{{# i18n }}gross{{/ i18n}}</td>
+        </tr>
     </thead>
     <tbody>
-    {{#data.object.partial_invoices}}
-    <tr>
-        <td style="width:55mm">- {{header}}</td>
-        <td style="width:25mm" class="right">{{#currencyformat}}{{net}}{{/currencyformat}}</td>
-        <td style="width:25mm" class="right">{{#currencyformat}}{{vat}}{{/currencyformat}}</td>
-        <td style="width:25mm" class="right">{{#currencyformat}}{{gross}}{{/currencyformat}}</td>
-    </tr>
-    {{#has_discount}}
-    <tr class="discount">
-        <td style="width:55mm">({{# i18n }}included discount{{/ i18n}}</td>
-        <td style="width:25mm" class="right">{{#currencyformat}}{{discount_net}}{{/currencyformat}}</td>
-        <td style="width:25mm" class="right">{{#currencyformat}}{{discount_vat}}{{/currencyformat}}</td>
-        <td style="width:25mm" class="right">{{#currencyformat}}{{discount_gross}}{{/currencyformat}})</td>
-    </tr>
-    <tr style="height: 2mm;"></tr>
-    {{/has_discount}}
-    {{/data.object.partial_invoices}}
-    {{#data.object.credit_notes}}
-    <tr>
-        <td style="width:55mm">- {{headerCn}}</td>
-        <td style="width:25mm" class="right">{{#currencyformat}}{{netCn}}{{/currencyformat}}</td>
-        <td style="width:25mm" class="right">{{#currencyformat}}{{vatCn}}{{/currencyformat}}</td>
-        <td style="width:25mm" class="right">{{#currencyformat}}{{grossCn}}{{/currencyformat}}</td>
-    </tr>
-    {{#has_discount}}
-    <tr class="discount">
-        <td style="width:55mm">({{# i18n }}included discount{{/ i18n}}</td>
-        <td style="width:25mm" class="right">{{#currencyformat}}{{discount_net}}{{/currencyformat}}</td>
-        <td style="width:25mm" class="right">{{#currencyformat}}{{discount_vat}}{{/currencyformat}}</td>
-        <td style="width:25mm" class="right">{{#currencyformat}}{{discount_gross}}{{/currencyformat}})</td>
-    </tr>
-    <tr style="height: 2mm;"></tr>
-    {{/has_discount}}
-    {{/data.object.credit_notes}}
-    <tr class="sum_row">
-        <td style="width:55mm">{{# i18n }}RemainingAmount{{/ i18n}}</td>
-        <td style="width:25mm" class="right">{{#currencyformat}}{{data.object.partial_calc_net}}{{/currencyformat}}</td>
-        <td style="width:25mm" class="right">{{#currencyformat}}{{data.object.partial_calc_tax}}{{/currencyformat}}</td>
-        <td style="width:25mm" class="right">{{#currencyformat}}{{data.object.partial_calc_gross}}{{/currencyformat}}</td>
-    </tr>
+        {{#data.object.partial_invoices}}
+        <tr>
+            <td style="width:55mm;">- {{header}}</td>
+            <td style="width:25mm;" class="right">{{#currencyformat}}{{net}}{{/currencyformat}}</td>
+            <td style="width:25mm;" class="right">{{#currencyformat}}{{vat}}{{/currencyformat}}</td>
+            <td style="width:25mm;" class="right">{{#currencyformat}}{{gross}}{{/currencyformat}}</td>
+        </tr>
+        {{#has_discount}}
+        <tr class="discount">
+            <td style="width:55mm;">({{# i18n }}included discount{{/ i18n}}</td>
+            <td style="width:25mm;" class="right">{{#currencyformat}}{{discount_net}}{{/currencyformat}}</td>
+            <td style="width:25mm;" class="right">{{#currencyformat}}{{discount_vat}}{{/currencyformat}}</td>
+            <td style="width:25mm;" class="right">{{#currencyformat}}{{discount_gross}}{{/currencyformat}})</td>
+        </tr>
+        <tr style="height: 2mm;"></tr>
+        {{/has_discount}}
+        {{/data.object.partial_invoices}}
+        {{#data.object.credit_notes}}
+        <tr>
+            <td style="width:55mm;">- {{headerCn}}</td>
+            <td style="width:25mm;" class="right">{{#currencyformat}}{{netCn}}{{/currencyformat}}</td>
+            <td style="width:25mm;" class="right">{{#currencyformat}}{{vatCn}}{{/currencyformat}}</td>
+            <td style="width:25mm;" class="right">{{#currencyformat}}{{grossCn}}{{/currencyformat}}</td>
+        </tr>
+        {{#has_discount}}
+        <tr class="discount">
+            <td style="width:55mm;">({{# i18n }}included discount{{/ i18n}}</td>
+            <td style="width:25mm;" class="right">{{#currencyformat}}{{discount_net}}{{/currencyformat}}</td>
+            <td style="width:25mm;" class="right">{{#currencyformat}}{{discount_vat}}{{/currencyformat}}</td>
+            <td style="width:25mm;" class="right">{{#currencyformat}}{{discount_gross}}{{/currencyformat}})</td>
+        </tr>
+        <tr style="height: 2mm;"></tr>
+        {{/has_discount}}
+        {{/data.object.credit_notes}}
+        <tr class="sum_row">
+            <td style="width:55mm;">{{# i18n }}RemainingAmount{{/ i18n}}</td>
+            <td style="width:25mm;" class="right">{{#currencyformat}}{{data.object.partial_calc_net}}{{/currencyformat}}</td>
+            <td style="width:25mm;;" class="right">{{#currencyformat}}{{data.object.partial_calc_tax}}{{/currencyformat}}</td>
+            <td style="width:25mm;" class="right">{{#currencyformat}}{{data.object.partial_calc_gross}}{{/currencyformat}}</td>
+        </tr>
     </tbody>
 </table>
 {{/data.object.is_final_invoice}}
-
-{{#parameter.shortPayLink_Y}}
-<div class="shortPay">
-    Sie können diese Rechnung bequem online bezahlen:<br/>
-    <a href="{{data.object.pay_link}}"><div class="centered">Jetzt bezahlen</div></a>
-    <a href="{{data.object.pay_link}}">
-        <img width="120" height="30" alt="tick" title="Jetzt bezahlen" src="https://s3.eu-central-1.amazonaws.com/sevdoc-static-content/button.svg">
-
-    </a>
-
-    <img width="106" height="20" alt="tick" align="right" src="http://sevdoc-static-content.s3-website.eu-central-1.amazonaws.com/cards.svg"/><br/>
-
-    <a href="{{data.object.pay_link}}">{{data.object.pay_link}}</a>
-</div>
-{{/parameter.shortPayLink_Y}}
+<!-- end calculation for final invoices -->
 
 <div class="footText">
     {{#data.object.delivery_equal_invoice}}
@@ -991,9 +880,16 @@
     {{data.object.paymentterms}}<br/>
     {{/data.object.paymentterms}}
 
+    {{#data.object.show_net}}
+    <p>    <img class="giro-qrcode" style="width: 3cm; height: 3cm;" alt="{{data.client.name}}" src="https://pay.alexplus.de?eur={{#currencyformat}}{{data.object.total}}{{/currencyformat}}&description={{data.object.invoice_number}}"/></p>
+    {{/data.object.show_net}}
+
+
     {{{data.object.foot_text}}}
 </div>
+<!-- end footer text -->
 
+<!-- second page swiss payment -->
 {{#data.object.esr.config}}
 {{#parameter.printSwissPaymentSlip_SHOW_NO_IMG}}
 <div class='newPage'>
@@ -1214,5 +1110,7 @@
 {{/parameter.printSwissPaymentSlip_SHOW_ESR}}
 {{/parameter.printSwissPaymentSlip_SHOW_NO_IMG}}
 {{/data.object.esr.config}}
+<!-- end second page swiss payment -->
+
 </body>
 </html>
