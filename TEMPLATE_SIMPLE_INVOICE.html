@@ -992,6 +992,11 @@
     {{/data.object.paymentterms}}
 
     {{{data.object.foot_text}}}
+
+    
+    <div class="url-qrcodeWrapper">
+        <a href="https://pay.alexplus.de/?eur={{data.object.total_net}}&description={{data.object.invoice_number}}" class="qrcode url-qrcode giro-qrcode"></a>
+    </div>
 </div>
 
 {{#data.object.esr.config}}
